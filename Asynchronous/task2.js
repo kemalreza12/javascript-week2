@@ -3,19 +3,21 @@ const getmonth = (callback) => {
         let error = false;
         let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         if(!error) {
-            callback(month)
+            callback(null, month)
         } else {
-            callback(new Error('Sorry Data Not Found'))
+            callback(new Error('Sorry Data Not Found', []))
         }
     },4000)
 }
 
-const getData = (data) => {
-    let newData = data
-    newData.map((element) => {
-        return element.month;
-    })
-    console.log(newData)
+const getData = (err, month) => {
+    if(err) {
+        console.log(err.message)
+    } else {
+        month.map((element) => {
+            console.log(element)
+        })
+    }
 }
 
 getmonth(getData)
