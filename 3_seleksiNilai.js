@@ -1,10 +1,9 @@
 const seleksiNilai = (nilaiAwal, nilaiAkhir, dataArray) => {
     function isInRange(value) {
-        if(this.upper < this.lower) {
+        if(this.lower > this.upper) {
             console.log('Nilai akhir harus lebih besar dari nilai awal')
-           
-        } else if(this.num == null ) {
-            console.log('Jumlah angka dalam dataArray tidak ada')
+        } else if(this.lower < this.dataArray && this.upper < this.dataArray || this.lower < this.dataArray && this.upper < this.dataArray) {
+            console.log('Jumlah data dalam dataArray tidak ada')
         }
         return value >= this.lower && value <= this.upper;
     }
@@ -14,9 +13,9 @@ const seleksiNilai = (nilaiAwal, nilaiAkhir, dataArray) => {
         upper: nilaiAkhir
     };
 
-    let data = dataArray.sort();
+    let data = dataArray.sort((a, b) => a - b);
     
     let num = data.filter(isInRange, range);
     console.log(num);
 };
-seleksiNilai(5,19,[8,4,5,7])
+seleksiNilai(5, 20 , [2, 25, 4, 14, 17, 30, 8])
